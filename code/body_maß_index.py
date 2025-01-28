@@ -12,7 +12,7 @@ while True:
         koerpergewicht = int(koerpergewicht)
         break
     else:
-        print:("UngUngültige Eingabe. Bitte versuchen Sie es erneut:")
+        print("Ungültige Eingabe. Bitte versuchen Sie es erneut:")
 
 bodymaßindex = koerpergewicht / (koerpergroesse / 100) ** 2
 bmi_gerundet = round(bodymaßindex,1)
