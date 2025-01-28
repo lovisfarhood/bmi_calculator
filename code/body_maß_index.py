@@ -6,13 +6,15 @@ while True:
         break
     else:
         print("Ungültige Eingabe. Bitte versuchen Sie es erneut:")
+
 while True:
     koerpergewicht = (input("Um fortzufahren, geben sie bitte nun ihr Körpergewicht in Kg an: "))
     if koerpergewicht.isdigit():
         koerpergewicht = int(koerpergewicht)
-        
+        break
     else:
         print("Ungültige Eingabe. Bitte versuchen Sie es erneut:")
+
 
 bodymaßindex = koerpergewicht / (koerpergroesse / 100) ** 2
 bmi_gerundet = round(bodymaßindex,1)
