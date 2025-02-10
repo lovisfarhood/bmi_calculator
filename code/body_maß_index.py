@@ -1,26 +1,29 @@
 import re
 
-muster = r"^\d+(\.\d+)?$"
+class BmiCalculator:
+    def __init__(self):
+        self.koerpergroesse = None
+        self.koerpergewicht = None
 
-print ("Willkommen zu BMI-Farhood. ")
-while True:
-    koerpergroesse = (input("Um ihren Body Maß Index zu berechnen, geben sie bitte zunächst ihre Körpergröße in Cm an: "))
-    if re.match(muster, koerpergroesse):
-        koerpergroesse = float(koerpergroesse)
-        break
-    else:
-        print("Ungültige Eingabe. Bitte versuchen Sie es erneut:")
+    def zahleingabe(self, zahlkontrolle):
+        muster = r"^\d+(\.\d+)?$"
+        while True:
+            eingabe = input(zahlkontrolle).replace(",", ".")
+            if re.match(muster, eingabe):
+                koerpergroesse = float(eingabe)
+                break
+            else:
+                print("Ungültige Eingabe. Bitte versuchen Sie es erneut:")
 
-while True:
-    koerpergewicht = (input("Um fortzufahren, geben sie bitte nun ihr Körpergewicht in Kg an: "))
-    if re.match(muster, koerpergewicht):
-        koerpergewicht = float(koerpergewicht)
-        break
-    else:
-        print("Ungültige Eingabe. Bitte versuchen Sie es erneut:")
+    def berechne_bmi(self):
+        bodymassindex = self.koerpergewicht / (self.koerpergroesse / 100) ** 2
+        bmi_gerundet = round(bodymassindex, 1)
+        print("Dein Bodymaßindex lautet", bmi_gerundet, "\nViel Spaß damit.")
 
+    def aktivieren(self):
+        print("Willkommen zu BMI-Farhood.")
+        self.koerpergroesse = self.zahleingabe("Um ihren Body Maß Index zu berechnen, geben sie bitte zunächst ihre Körpergröße in Cm an: ")
+        self.koerpergewicht = self.zahleingabe("Bitte geben Sie nun Ihr Körpergewicht in Kg an: ")
+        bmi = self.berechne_bmi()
+        print ("Dein Bodymaßindex lautet", bmi_gerundet,"\nViel spaß damit.")
 
-bodymaßindex = koerpergewicht / (koerpergroesse / 100) ** 2
-bmi_gerundet = round(bodymaßindex,1)
-
-print ("Dein Bodymaßindex lautet", bmi_gerundet,"\nViel spaß damit.")
